@@ -28,4 +28,18 @@ jobs: # Job to execute on event
         run: |
           ls
           cat calc.go #prints the content of calc.go
+        
+      - name: Checkout private repo remotely
+        uses: actions/checkout@v2
+        with:
+          repository: lowkh2/GoSchoolRemoteExample
+          path: virtualRepo #Folder to save to in my virtual env
+          token: ${{ secrets.GO-SECRET }}
+          
+      - name: Show hidden files
+        run: |
+          cd virtualRepoFolder # to access the folder of interest in my virtual env
+          ls
+          cat myText.txt # show content of file of interest
+          cd ..
           
