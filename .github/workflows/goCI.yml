@@ -64,7 +64,25 @@ jobs: # Job to execute on event
         if: always() #always do it
         with:
           files: GoCICDDemo/report.xml #make use of a file we created
+      
+      - if: ${{ success() }}
+        name: Create upload directory
+        run: mkdir upload
+        
+      - name: Prepare documents
+        run: mv GoCICDDemo/report.xml ./upload
+        
+      - name: Prepare artifacts
+        uses: actions/upload-artifact@v2
+        with: 
+          name: assetDocuments
+          path: upload
           
+      - name: Download content
+        uses: actions/download-artifact@v2
+        with: 
+          name: assetDocuments
+      
       - if: ${{ failure() }}
         name: Create Issues Notifications
         uses: nashmaniac/create-issue-action@v1.1
