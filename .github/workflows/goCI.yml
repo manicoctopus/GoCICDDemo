@@ -28,8 +28,10 @@ jobs: # Job to execute on event
       
       - name: Check file system #check virtual environment has my files
         run: |
+          cd GoCICDDemo # to access the folder of interest in my virtual env
           ls
           cat calc.go #prints the content of calc.go
+          cd ..
         
       - name: Checkout private repo remotely
         uses: actions/checkout@v2
