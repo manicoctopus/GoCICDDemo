@@ -1,6 +1,6 @@
 name: Release of Go Code
 
-on: 
+on:
   create:
     tags:
       - v*
