@@ -34,7 +34,7 @@ jobs: # Job to execute on event
         with:
           repository: lowkh2/GoSchoolRemoteExample
           path: virtualRepo #Folder to save to in my virtual env
-          token: ${{ secrets.GO-SECRET }}
+          token: ${{ secrets.GO_SECRET }}
           
       - name: Show hidden files
         run: |
