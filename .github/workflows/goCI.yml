@@ -23,6 +23,8 @@ jobs: # Job to execute on event
         
       - name: Checkout our codes #being repo code to virtual environment
         uses: actions/checkout@v2
+        with:
+          path: GoCICDDemo #Folder to save to in my virtual env
       
       - name: Check file system #check virtual environment has my files
         run: |
@@ -47,7 +49,7 @@ jobs: # Job to execute on event
         run: |
           go get -u github.com/franela/goblin # Adds package for Goblin testing
           go get -u github.com/tebeka/go2xunit # Adds package for conversion
-          go mod init .
+          go mod init GoCICDDemo
           go mod tidy
           go mod vendor
           go test -v # Command to run go test
